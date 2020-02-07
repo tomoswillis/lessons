@@ -8,6 +8,6 @@ class ShowsController extends Controller
 {
     public function index()
     {
-        return 'I\'m Working';
+        return Show::all();
     }
 }

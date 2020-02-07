@@ -8,6 +8,11 @@ class FilmsController extends Controller
 {
     public function index()
     {
-        return 'I\'m Working';
+        $films = Film::query()
+            ->where('title', 'Hot Fuzz')
+            ->orderBy('created_at', 'asc')
+            ->first();
+
+        dd($films);
     }
 }
