@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class FilmsTableSeeder extends Seeder
+class ShowsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class FilmsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('films')->insert([
+        DB::table('shows')->insert([
             [
                 'id' => 1,
                 'title' => 'Hot Fuzz',
