@@ -31,3 +31,14 @@ Route::prefix('films')
         })->name('films.show');
 
     });
+
+// Prefixes the URI with 'Films'
+Route::prefix('shows')
+->group(function() {
+
+    // Returns all Films 
+    Route::get('/')
+    ->uses('Shows\ShowsController@index')
+    ->name('shows.index');
+
+});
