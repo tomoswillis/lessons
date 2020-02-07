@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Shows; 
+namespace App\Domain\Films; 
 
 use App\Http\Controllers\Controller;
 
-class ShowsController extends Controller
+class FilmsController extends Controller
 {
     public function index()
     {
