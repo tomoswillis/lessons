@@ -16,18 +16,18 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-// Prefixes the URI with 'shows'
-Route::prefix('shows')
+// Prefixes the URI with 'Films'
+Route::prefix('films')
     ->group(function() {
 
-        // Returns all shows 
+        // Returns all Films 
         Route::get('/')
-        ->uses('Shows\ShowsController@index')
-        ->name('shows.index');
+        ->uses('Films\FilmsController@index')
+        ->name('films.index');
 
-        // Returns an individual show
+        // Returns an individual film
         Route::get('{id}', function ($id) {
             return $id;
-        })->name('shows.show');
+        })->name('films.show');
 
     });
