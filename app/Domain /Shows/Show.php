@@ -1,8 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Domain\Shows;
 
 use Illuminate\Database\Eloquent\Model;
+
+use App\Domain\Episodes\Episode;
 
 class Show extends Model
 {
@@ -12,4 +14,9 @@ class Show extends Model
      * @var array
      */
     protected $fillable = ['title', 'description', 'rating'];
+
+    public function episodes()
+    {
+        return $this->hasMany(Episode::class);
+    }
 }
