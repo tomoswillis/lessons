@@ -17,14 +17,14 @@ class CreateEpisodesTable extends Migration
     public function up()
     {
         Schema::create('episodes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedInteger('show_id');
+            $table->increments('id');
+            $table->unsignedInteger('show_id')->nullable();
+            $table->foreign('show_id')->references('id')->on('shows')>onDelete('cascade');
             $table->string('title');
+            $table->timestamp('released_at')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
-            // $table->foreign('show_id')->references('id')->on('shows');
         });
     }
 
@@ -35,7 +35,8 @@ class CreateEpisodesTable extends Migration
      */
     public function down()
     {
+        $table->dropForeign('episodes_show_id_foreign');
+
         Schema::dropIfExists('episodes');
-        // $table->dropForeign('episodes_show_id_foreign');
     }
 }
