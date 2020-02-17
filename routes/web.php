@@ -26,8 +26,8 @@ Route::prefix('films')
         ->name('films.index');
 
         // Returns an individual film
-        Route::get('{id}', function ($id) {
-            return $id;
+        Route::get('{slug}', function ($slug) {
+            return $slug;
         })->name('films.show');
 
     });
