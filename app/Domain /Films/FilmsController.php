@@ -8,8 +8,17 @@ class FilmsController extends Controller
 {
     public function index()
     {
-        $films = Film::all();
+        $model = [
+            'films' => Film::all()->map(function ($film) {
+                return [
+                    'id' => $film->id,
+                    'title' => $film->title,
+                    'genre' => $film->genre->title,
+                    'url' => route('films.show', $film->slug),
+                ];
+            }),
+        ];
 
-        dd($films);
+        return view('app/films/index')->with(compact('model'));
     }
 }

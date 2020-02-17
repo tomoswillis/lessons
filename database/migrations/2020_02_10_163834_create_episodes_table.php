@@ -19,12 +19,14 @@ class CreateEpisodesTable extends Migration
         Schema::create('episodes', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('show_id')->nullable();
-            $table->foreign('show_id')->references('id')->on('shows')>onDelete('cascade');
             $table->string('title');
+            $table->integer('order');
             $table->timestamp('released_at')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('show_id')->references('id')->on('shows');
         });
     }
 
