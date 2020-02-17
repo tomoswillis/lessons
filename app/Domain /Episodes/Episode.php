@@ -13,8 +13,8 @@ class Episode extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'description'];
-
+    protected $fillable = ['title', 'description', 'released_at',];
+    
     public function show()
     {
         return $this->belongsTo(Show::class);

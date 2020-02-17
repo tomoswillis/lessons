@@ -19,9 +19,11 @@ class CreateFilmsTable extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->timestamp('released_at')->nullable();
             $table->integer('rating');
+            $table->integer('genre_id');
             $table->timestamps();
             $table->softDeletes();
         });

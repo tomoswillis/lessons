@@ -19,6 +19,7 @@ class CreateShowsTable extends Migration
         Schema::create('shows', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->integer('rating');
             $table->text('description')->nullable();
             $table->timestamp('released_at')->nullable();
