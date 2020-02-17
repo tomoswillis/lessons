@@ -1,8 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Domain\Shows;
 
 use Illuminate\Database\Eloquent\Model;
+
+use App\Domain\Episodes\Episode;
+use App\Domain\Genres\Genre;
+
 
 class Show extends Model
 {
@@ -11,5 +15,15 @@ class Show extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'description', 'rating'];
+    protected $fillable = ['title', 'slug', 'description', 'rating'];
+
+    public function genre() 
+    {
+        return $this->belongsTo(Genre::class);
+    }
+
+    public function episodes()
+    {
+        return $this->hasMany(Episode::class);
+    }
 }

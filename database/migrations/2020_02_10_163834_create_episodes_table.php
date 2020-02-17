@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CreateShowsTable extends Migration
+class CreateEpisodesTable extends Migration
 {
     use SoftDeletes;
 
@@ -16,14 +16,17 @@ class CreateShowsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shows', function (Blueprint $table) {
+        Schema::create('episodes', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('show_id')->nullable();
             $table->string('title');
-            $table->integer('rating');
-            $table->text('description')->nullable();
+            $table->integer('order');
             $table->timestamp('released_at')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('show_id')->references('id')->on('shows');
         });
     }
 
@@ -34,6 +37,8 @@ class CreateShowsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shows');
+        $table->dropForeign('episodes_show_id_foreign');
+
+        Schema::dropIfExists('episodes');
     }
 }
